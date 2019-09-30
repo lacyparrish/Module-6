@@ -56,9 +56,18 @@ nc_cotton %>%
   spread(key = "measurement", value = "value") -> nc_cotton_2018
   
 nc_cotton_2018 %>%
+<<<<<<< HEAD
   rename(yield = ` YIELD, MEASURED IN LB / ACRE`) %>%
   rename(acres = ` ACRES HARVESTED`) %>%
   mutate(total_lbs = (yield * acres)) %>%
   select(county, total_lbs) %>%
   top_n(3, total_lbs)
+=======
+  rename(yield =  YIELD, MEASURED IN LB / ACRE) %>%
+  rename(acres =  ACRES HARVESTED) %>%
+  mutate(total_lbs = (yield * acres)) %>%
+  group_by(county, total_lbs) %>%
+  arrange(desc(total_lbs)) %>%
+  top_n(3)
+>>>>>>> fa1881dd19f8e19c931a0be1981311cea333e13f
             
